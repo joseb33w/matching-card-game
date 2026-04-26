@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Match Mania</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="app-shell">
+    <section class="hero-card">
+      <div class="title-row">
+        <span class="logo" aria-hidden="true">🃏</span>
+        <div>
+          <p class="eyebrow">Memory matching game</p>
+          <h1>Match Mania</h1>
+        </div>
+      </div>
+      <p class="intro">Flip cards two at a time and find every matching pair. The fewer moves and the faster you go, the better!</p>
+    </section>
+
+    <section class="game-card" aria-label="Matching card game">
+      <div class="top-bar">
+        <div class="stat-card">
+          <span>Moves</span>
+          <strong id="moves">0</strong>
+        </div>
+        <div class="stat-card">
+          <span>Matches</span>
+          <strong><span id="matches">0</span>/<span id="totalPairs">8</span></strong>
+        </div>
+        <div class="stat-card">
+          <span>Time</span>
+          <strong id="timer">0:00</strong>
+        </div>
+      </div>
+
+      <div class="difficulty" role="group" aria-label="Difficulty">
+        <button class="chip active" data-pairs="6">Easy</button>
+        <button class="chip" data-pairs="8">Medium</button>
+        <button class="chip" data-pairs="12">Hard</button>
+      </div>
+
+      <div id="status" class="status" role="status" aria-live="polite">Tap any card to start!</div>
+
+      <div id="board" class="board" aria-label="Card board"></div>
+
+      <div class="actions">
+        <button id="newGameBtn" class="primary-btn">New Game</button>
+        <button id="shuffleBtn" class="secondary-btn">Reshuffle</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
