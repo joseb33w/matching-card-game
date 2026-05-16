@@ -10,11 +10,23 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <div class="cosmic-grid" aria-hidden="true"></div>
   <div class="bg-blob blob-one" aria-hidden="true"></div>
   <div class="bg-blob blob-two" aria-hidden="true"></div>
+  <div class="bg-blob blob-three" aria-hidden="true"></div>
+  <div class="sparkle-field" aria-hidden="true"></div>
+  <span class="floating-glyph glyph-one" aria-hidden="true">⭐</span>
+  <span class="floating-glyph glyph-two" aria-hidden="true">🧠</span>
+  <span class="floating-glyph glyph-three" aria-hidden="true">⚡</span>
 
   <main class="app-shell">
     <section class="hero-card">
+      <div class="marquee" aria-hidden="true">
+        <span>Live memory arcade</span>
+        <span>Combo ready</span>
+        <span>Power-ups online</span>
+      </div>
+
       <div class="title-row">
         <span class="logo" aria-hidden="true">🃏</span>
         <div>
@@ -23,6 +35,12 @@
         </div>
       </div>
       <p class="intro">Flip pairs, build streaks, trigger power-ups, and chase a new best score. Choose a deck and mode, then master the board before the combo meter cools down.</p>
+
+      <div class="quest-ribbon" aria-hidden="true">
+        <span>🔥 Streaks</span>
+        <span>✨ Portals</span>
+        <span>🏆 Best scores</span>
+      </div>
 
       <div class="hero-actions" aria-label="Game options">
         <div>
@@ -45,6 +63,10 @@
     </section>
 
     <section class="game-card" aria-label="Matching card game">
+      <div class="cabinet-top" aria-hidden="true">
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
+
       <div class="top-bar">
         <div class="stat-card">
           <span>Moves</span>
@@ -98,7 +120,13 @@
 
       <div id="status" class="status" role="status" aria-live="polite">Tap any card to start!</div>
 
-      <div id="board" class="board" aria-label="Card board"></div>
+      <div class="board-frame">
+        <div class="corner-dot dot-a" aria-hidden="true"></div>
+        <div class="corner-dot dot-b" aria-hidden="true"></div>
+        <div class="corner-dot dot-c" aria-hidden="true"></div>
+        <div class="corner-dot dot-d" aria-hidden="true"></div>
+        <div id="board" class="board" aria-label="Card board"></div>
+      </div>
 
       <div class="actions">
         <button id="newGameBtn" class="primary-btn">New Quest</button>
