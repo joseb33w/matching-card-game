@@ -3,23 +3,45 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Match Mania</title>
+  <title>Match Mania Quest</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <div class="bg-blob blob-one" aria-hidden="true"></div>
+  <div class="bg-blob blob-two" aria-hidden="true"></div>
+
   <main class="app-shell">
     <section class="hero-card">
       <div class="title-row">
         <span class="logo" aria-hidden="true">🃏</span>
         <div>
-          <p class="eyebrow">Memory matching game</p>
-          <h1>Match Mania</h1>
+          <p class="eyebrow">Memory arcade</p>
+          <h1>Match Mania Quest</h1>
         </div>
       </div>
-      <p class="intro">Flip cards two at a time and find every matching pair. The fewer moves and the faster you go, the better!</p>
+      <p class="intro">Flip pairs, build streaks, trigger power-ups, and chase a new best score. Choose a deck and mode, then master the board before the combo meter cools down.</p>
+
+      <div class="hero-actions" aria-label="Game options">
+        <div>
+          <span class="control-label">Deck</span>
+          <div class="pill-row" id="deckControls">
+            <button class="option-pill active" data-deck="snacks">🍕 Snacks</button>
+            <button class="option-pill" data-deck="space">🚀 Space</button>
+            <button class="option-pill" data-deck="beasts">🐉 Beasts</button>
+          </div>
+        </div>
+        <div>
+          <span class="control-label">Mode</span>
+          <div class="pill-row" id="modeControls">
+            <button class="option-pill active" data-mode="classic">Classic</button>
+            <button class="option-pill" data-mode="sprint">Sprint</button>
+            <button class="option-pill" data-mode="zen">Zen</button>
+          </div>
+        </div>
+      </div>
     </section>
 
     <section class="game-card" aria-label="Matching card game">
@@ -29,8 +51,12 @@
           <strong id="moves">0</strong>
         </div>
         <div class="stat-card">
+          <span>Score</span>
+          <strong id="score">0</strong>
+        </div>
+        <div class="stat-card">
           <span>Matches</span>
-          <strong><span id="matches">0</span>/<span id="totalPairs">8</span></strong>
+          <strong><span id="matches">0</span>/<span id="totalPairs">6</span></strong>
         </div>
         <div class="stat-card">
           <span>Time</span>
@@ -38,10 +64,36 @@
         </div>
       </div>
 
+      <div class="score-strip">
+        <div>
+          <span class="mini-label">Streak</span>
+          <strong id="streak">x0</strong>
+        </div>
+        <div>
+          <span class="mini-label">Best</span>
+          <strong id="bestScore">0</strong>
+        </div>
+        <div>
+          <span class="mini-label">Rating</span>
+          <strong id="rating">Rookie</strong>
+        </div>
+      </div>
+
       <div class="difficulty" role="group" aria-label="Difficulty">
-        <button class="chip active" data-pairs="6">Easy</button>
-        <button class="chip" data-pairs="8">Medium</button>
-        <button class="chip" data-pairs="12">Hard</button>
+        <button class="chip active" data-pairs="6">Easy · 12 cards</button>
+        <button class="chip" data-pairs="8">Medium · 16 cards</button>
+        <button class="chip" data-pairs="12">Hard · 24 cards</button>
+      </div>
+
+      <div class="powerups" aria-label="Power ups">
+        <button id="peekBtn" class="power-btn" type="button"><span>👀</span> Peek <small id="peekCount">2</small></button>
+        <button id="hintBtn" class="power-btn" type="button"><span>💡</span> Hint <small id="hintCount">3</small></button>
+        <button id="twistBtn" class="power-btn" type="button"><span>🌀</span> Twist <small id="twistCount">1</small></button>
+        <button id="soundBtn" class="power-btn" type="button" aria-pressed="false"><span>🔇</span> Sound</button>
+      </div>
+
+      <div class="progress-wrap" aria-hidden="true">
+        <div id="progressBar" class="progress-bar"></div>
       </div>
 
       <div id="status" class="status" role="status" aria-live="polite">Tap any card to start!</div>
@@ -49,11 +101,26 @@
       <div id="board" class="board" aria-label="Card board"></div>
 
       <div class="actions">
-        <button id="newGameBtn" class="primary-btn">New Game</button>
+        <button id="newGameBtn" class="primary-btn">New Quest</button>
         <button id="shuffleBtn" class="secondary-btn">Reshuffle</button>
       </div>
     </section>
   </main>
+
+  <dialog id="winDialog" class="win-dialog">
+    <div class="dialog-card">
+      <button id="closeDialog" class="dialog-close" aria-label="Close">×</button>
+      <p class="eyebrow">Quest complete</p>
+      <h2 id="winTitle">Brilliant memory!</h2>
+      <p id="winSummary" class="dialog-summary"></p>
+      <div class="dialog-stats">
+        <span><strong id="finalScore">0</strong>Score</span>
+        <span><strong id="finalMoves">0</strong>Moves</span>
+        <span><strong id="finalTime">0:00</strong>Time</span>
+      </div>
+      <button id="playAgainBtn" class="primary-btn">Play again</button>
+    </div>
+  </dialog>
 
   <script src="app.js"></script>
 </body>

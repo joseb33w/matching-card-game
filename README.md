@@ -1,14 +1,17 @@
-# Match Mania
+# Match Mania Quest
 
 A polished browser-based memory matching card game built with plain HTML, CSS, and JavaScript.
 
 ## Features
 
-- 3 difficulty levels (6, 8, or 12 pairs)
-- Smooth 3D card flip animations
-- Move counter, match counter, and live timer
-- Win detection with stats summary
-- Mobile-friendly responsive layout
+- 3 difficulty levels: Easy, Medium, and Hard
+- 3 themed emoji decks: Snacks, Space, and Beasts
+- 3 play modes: Classic, Sprint, and Zen
+- Power-ups: Peek, Hint, and Twist
+- Score, streak, rating, move counter, match counter, and timer
+- Local best-score tracking for each deck, mode, and difficulty
+- Opening board preview, animated match feedback, sound toggle, and confetti win celebration
+- Mobile-friendly responsive layout with smooth 3D card flip animations
 
 ## Run
 
