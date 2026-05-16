@@ -6,59 +6,80 @@
   <title>Match Mania Quest</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div class="cosmic-grid" aria-hidden="true"></div>
-  <div class="bg-blob blob-one" aria-hidden="true"></div>
-  <div class="bg-blob blob-two" aria-hidden="true"></div>
-  <div class="bg-blob blob-three" aria-hidden="true"></div>
-  <div class="sparkle-field" aria-hidden="true"></div>
-  <span class="floating-glyph glyph-one" aria-hidden="true">⭐</span>
-  <span class="floating-glyph glyph-two" aria-hidden="true">🧠</span>
-  <span class="floating-glyph glyph-three" aria-hidden="true">⚡</span>
+  <div class="neon-sky" aria-hidden="true">
+    <div class="star-map"></div>
+    <div class="scanlines"></div>
+    <div class="orbit orbit-one"></div>
+    <div class="orbit orbit-two"></div>
+    <div class="bg-blob blob-one"></div>
+    <div class="bg-blob blob-two"></div>
+    <div class="bg-blob blob-three"></div>
+    <span class="floating-glyph glyph-one">✦</span>
+    <span class="floating-glyph glyph-two">◆</span>
+    <span class="floating-glyph glyph-three">✺</span>
+  </div>
 
   <main class="app-shell">
     <section class="hero-card">
-      <div class="marquee" aria-hidden="true">
-        <span>Live memory arcade</span>
-        <span>Combo ready</span>
-        <span>Power-ups online</span>
+      <div class="ticker" aria-hidden="true">
+        <div class="ticker-track">
+          <span>Memory Arcade</span>
+          <span>Combo Engine</span>
+          <span>Portal Cards</span>
+          <span>Power-Ups Armed</span>
+          <span>High Score Hunt</span>
+        </div>
+      </div>
+
+      <div class="hero-topline">
+        <span class="chapter-badge">Season 01</span>
+        <span class="live-dot"><i></i> live quest</span>
       </div>
 
       <div class="title-row">
-        <span class="logo" aria-hidden="true">🃏</span>
+        <span class="logo" aria-hidden="true">
+          <span class="logo-core">🃏</span>
+        </span>
         <div>
-          <p class="eyebrow">Memory arcade</p>
+          <p class="eyebrow">Neon memory arcade</p>
           <h1>Match Mania Quest</h1>
         </div>
       </div>
-      <p class="intro">Flip pairs, build streaks, trigger power-ups, and chase a new best score. Choose a deck and mode, then master the board before the combo meter cools down.</p>
+
+      <p class="intro">Step into a tiny cosmic cabinet where every card is a portal. Flip pairs, chain streaks, bend the board with power-ups, and race your own best score through snack worlds, star fields, and beast realms.</p>
 
       <div class="quest-ribbon" aria-hidden="true">
-        <span>🔥 Streaks</span>
-        <span>✨ Portals</span>
-        <span>🏆 Best scores</span>
+        <span><strong>01</strong> Scan the board</span>
+        <span><strong>02</strong> Chain combos</span>
+        <span><strong>03</strong> Claim glory</span>
       </div>
 
       <div class="hero-actions" aria-label="Game options">
-        <div>
-          <span class="control-label">Deck</span>
-          <div class="pill-row" id="deckControls">
-            <button class="option-pill active" data-deck="snacks">🍕 Snacks</button>
-            <button class="option-pill" data-deck="space">🚀 Space</button>
-            <button class="option-pill" data-deck="beasts">🐉 Beasts</button>
+        <div class="control-panel">
+          <span class="control-label">Choose your realm</span>
+          <div class="pill-row realm-row" id="deckControls">
+            <button class="option-pill active" data-deck="snacks"><b>🍕</b> Snacks</button>
+            <button class="option-pill" data-deck="space"><b>🚀</b> Space</button>
+            <button class="option-pill" data-deck="beasts"><b>🐉</b> Beasts</button>
           </div>
         </div>
-        <div>
-          <span class="control-label">Mode</span>
+        <div class="control-panel">
+          <span class="control-label">Set the rhythm</span>
           <div class="pill-row" id="modeControls">
             <button class="option-pill active" data-mode="classic">Classic</button>
             <button class="option-pill" data-mode="sprint">Sprint</button>
             <button class="option-pill" data-mode="zen">Zen</button>
           </div>
         </div>
+      </div>
+
+      <div class="side-note" aria-hidden="true">
+        <span>Tip</span>
+        <p>Use Peek before a Twist to memorize the new constellation.</p>
       </div>
     </section>
 
@@ -67,70 +88,81 @@
         <span></span><span></span><span></span><span></span><span></span>
       </div>
 
-      <div class="top-bar">
-        <div class="stat-card">
-          <span>Moves</span>
-          <strong id="moves">0</strong>
+      <div class="screen-bezel">
+        <div class="machine-header">
+          <div>
+            <p class="eyebrow">Arcade console</p>
+            <h2>Portal Board</h2>
+          </div>
+          <div class="machine-sticker" aria-hidden="true">v2</div>
         </div>
-        <div class="stat-card">
-          <span>Score</span>
-          <strong id="score">0</strong>
+
+        <div class="top-bar">
+          <div class="stat-card">
+            <span>Moves</span>
+            <strong id="moves">0</strong>
+          </div>
+          <div class="stat-card stat-score">
+            <span>Score</span>
+            <strong id="score">0</strong>
+          </div>
+          <div class="stat-card">
+            <span>Matches</span>
+            <strong><span id="matches">0</span>/<span id="totalPairs">6</span></strong>
+          </div>
+          <div class="stat-card">
+            <span>Time</span>
+            <strong id="timer">0:00</strong>
+          </div>
         </div>
-        <div class="stat-card">
-          <span>Matches</span>
-          <strong><span id="matches">0</span>/<span id="totalPairs">6</span></strong>
+
+        <div class="score-strip">
+          <div>
+            <span class="mini-label">Streak</span>
+            <strong id="streak">x0</strong>
+          </div>
+          <div>
+            <span class="mini-label">Best</span>
+            <strong id="bestScore">0</strong>
+          </div>
+          <div>
+            <span class="mini-label">Rating</span>
+            <strong id="rating">Rookie</strong>
+          </div>
         </div>
-        <div class="stat-card">
-          <span>Time</span>
-          <strong id="timer">0:00</strong>
+
+        <div class="difficulty" role="group" aria-label="Difficulty">
+          <button class="chip active" data-pairs="6">Easy · 12 cards</button>
+          <button class="chip" data-pairs="8">Medium · 16 cards</button>
+          <button class="chip" data-pairs="12">Hard · 24 cards</button>
         </div>
-      </div>
 
-      <div class="score-strip">
-        <div>
-          <span class="mini-label">Streak</span>
-          <strong id="streak">x0</strong>
+        <div class="powerups" aria-label="Power ups">
+          <button id="peekBtn" class="power-btn" type="button"><span>👀</span> Peek <small id="peekCount">2</small></button>
+          <button id="hintBtn" class="power-btn" type="button"><span>💡</span> Hint <small id="hintCount">3</small></button>
+          <button id="twistBtn" class="power-btn" type="button"><span>🌀</span> Twist <small id="twistCount">1</small></button>
+          <button id="soundBtn" class="power-btn" type="button" aria-pressed="false"><span>🔇</span> Sound</button>
         </div>
-        <div>
-          <span class="mini-label">Best</span>
-          <strong id="bestScore">0</strong>
+
+        <div class="progress-wrap" aria-hidden="true">
+          <div id="progressBar" class="progress-bar"></div>
         </div>
-        <div>
-          <span class="mini-label">Rating</span>
-          <strong id="rating">Rookie</strong>
+
+        <div id="status" class="status" role="status" aria-live="polite">Tap any card to start!</div>
+
+        <div class="board-frame">
+          <div class="board-glow" aria-hidden="true"></div>
+          <div class="corner-dot dot-a" aria-hidden="true"></div>
+          <div class="corner-dot dot-b" aria-hidden="true"></div>
+          <div class="corner-dot dot-c" aria-hidden="true"></div>
+          <div class="corner-dot dot-d" aria-hidden="true"></div>
+          <div id="board" class="board" aria-label="Card board"></div>
         </div>
-      </div>
 
-      <div class="difficulty" role="group" aria-label="Difficulty">
-        <button class="chip active" data-pairs="6">Easy · 12 cards</button>
-        <button class="chip" data-pairs="8">Medium · 16 cards</button>
-        <button class="chip" data-pairs="12">Hard · 24 cards</button>
-      </div>
-
-      <div class="powerups" aria-label="Power ups">
-        <button id="peekBtn" class="power-btn" type="button"><span>👀</span> Peek <small id="peekCount">2</small></button>
-        <button id="hintBtn" class="power-btn" type="button"><span>💡</span> Hint <small id="hintCount">3</small></button>
-        <button id="twistBtn" class="power-btn" type="button"><span>🌀</span> Twist <small id="twistCount">1</small></button>
-        <button id="soundBtn" class="power-btn" type="button" aria-pressed="false"><span>🔇</span> Sound</button>
-      </div>
-
-      <div class="progress-wrap" aria-hidden="true">
-        <div id="progressBar" class="progress-bar"></div>
-      </div>
-
-      <div id="status" class="status" role="status" aria-live="polite">Tap any card to start!</div>
-
-      <div class="board-frame">
-        <div class="corner-dot dot-a" aria-hidden="true"></div>
-        <div class="corner-dot dot-b" aria-hidden="true"></div>
-        <div class="corner-dot dot-c" aria-hidden="true"></div>
-        <div class="corner-dot dot-d" aria-hidden="true"></div>
-        <div id="board" class="board" aria-label="Card board"></div>
-      </div>
-
-      <div class="actions">
-        <button id="newGameBtn" class="primary-btn">New Quest</button>
-        <button id="shuffleBtn" class="secondary-btn">Reshuffle</button>
+        <div class="actions">
+          <button id="newGameBtn" class="primary-btn">New Quest</button>
+          <button id="shuffleBtn" class="secondary-btn">Reshuffle</button>
+        </div>
       </div>
     </section>
   </main>
